@@ -1,5 +1,4 @@
 var express = require('express');
-//var bitreserve = require('./client');
 var Client = require('node-rest-client').Client;
 
 var app = express();
@@ -15,8 +14,8 @@ router.use(function(req, res, next) {
 	next();  
 });
 
-router.get('/bitreserve', function(req, res, next) {
-	client.get("https://api.bitreserve.org/v0/reserve/statistics", function(data, response){
+router.get('/bitreserve/', function(req, res, next) {
+	client.get(req.query.url, function(data, response){
 		res.json(JSON.parse(data));
 	});
 });
